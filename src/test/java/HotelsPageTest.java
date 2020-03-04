@@ -22,6 +22,14 @@ public class HotelsPageTest {
 
     }
 
+    @Test(dependsOnMethods = {"testHotelSearch"})
+    void testSortingAndFilters() {
+        hotelsPage.sortByOptions();
+        hotelsPage.addPricesToList();
+        Assert.assertTrue(hotelsPage.checkListIsSorted());
+    }
+
+
     @AfterClass
     void flush() {
         hotelsPage.driver.close();
